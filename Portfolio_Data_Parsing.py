@@ -36,17 +36,8 @@ for i in column_names:
     additional_columns.append(col_name)
 additional_columns = additional_columns[:-3]
 print(additional_columns)
-new_data[additional_columns[0]] = new_data[column_names[0]] - new_data['Microsoft'].shift(1)
-new_data[additional_columns[1]] = new_data[column_names[1]] - new_data['Pepsico'].shift(1)
-new_data[additional_columns[2]] = new_data[column_names[2]] - new_data['Accenture'].shift(1)
-new_data[additional_columns[3]] = new_data[column_names[3]] - new_data['Citigroup'].shift(1)
-new_data[additional_columns[4]] = new_data[column_names[4]] - new_data['Meta'].shift(1)
-new_data[additional_columns[5]] = new_data[column_names[5]] - new_data['OMV'].shift(1)
-new_data[additional_columns[6]] = new_data[column_names[6]] - new_data['UBS'].shift(1)
-new_data[additional_columns[7]] = new_data[column_names[7]] - new_data['Zurich_Insurance_Group'].shift(1)
-new_data[additional_columns[8]] = new_data[column_names[8]] - new_data['BMW'].shift(1)
-new_data[additional_columns[9]] = new_data[column_names[9]] - new_data['Sony'].shift(1)
-new_data[additional_columns[10]] = new_data[column_names[10]] - new_data['S&P500'].shift(1)
+for r, n in zip(additional_columns, column_names):
+    new_data[r] = new_data[n] - new_data[n].shift(1)
 print(new_data.head(2))
 new_data.loc['Sum'] = new_data.sum()
 for t in column_names:
